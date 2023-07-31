@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "./TeamInstructionAndDiscussions.scss";
 import { AiFillWechat } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchChats } from "../../redux/chatSlice";
+  import { addNewChat } from "../../redux/chatSlice";
 
 const TeamInstructionAndDiscussions = () => {
   const [inputValue, setInputValue] = useState("");
-  const [messages, setMessages] = useState([]);
+ 
+  const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.users.currentUser);
+  const {chats} = useSelector((state) => state.chats);
+
+  console.log(user);
+ 
 
   // Handler for sending messages
   const handleSendMessage = () => {
-    if (inputValue.trim() !== "") {
-      // Add the new message to the messages state with the "sender" property
-      setMessages([...messages, { text: inputValue, sender: "user" }]);
+    if (user && user.user_id && inputValue.trim() !== "") {
+      const newChatData = {
+        senderId:user.user_id,
+        senderName:user.username,
+        message:inputValue
+      };
+
+      // Dispatch the addNewChat action to save the new chat data in the Redux store and send it to the server
+      dispatch(addNewChat(newChatData));
 
       // Clear the input field after sending the message
       setInputValue("");
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchChats());
+  }, [dispatch  ]);
+
+
   return (
     <div className="discussions-container">
       <div className="discussions-sidebar">
@@ -27,8 +49,12 @@ const TeamInstructionAndDiscussions = () => {
           <AiFillWechat size={85} color="teal" />
         </div>
         <ul className="discussions-sidebar-headers">
-          <Link to='/teamchat/general' className="discussions-link">General</Link>
-          <Link to='/teamchat/instructions'  className="discussions-link">Instructions</Link>
+          <Link to="/teamchat/general" className="discussions-link">
+            General
+          </Link>
+          <Link to="/teamchat/instructions" className="discussions-link">
+            Instructions
+          </Link>
           {/* <Link className="discussions-link">Strategy</Link>
           <Link className="discussions-link">Updates</Link>
           <Link className="discussions-link">Budget</Link> */}
@@ -44,17 +70,18 @@ const TeamInstructionAndDiscussions = () => {
         </div>
         <div className="discussions-chatscreen">
           <div className="chatscreen-messages">
-            {messages.map((message, index) => (
+            {chats && chats.map((message, index) => (
               <div
                 key={index}
-                className={`message ${message.sender ? message.sender : ""}`}
+                className={`message ${message.sender === user ? "right" : ""}`}
+
               >
-                {message.text}
+                <p style={{ color: "blue" }}>{message.senderName}</p>
+                {message.message}
               </div>
             ))}
-  
-          </div>
-          <div className="chatscreen-input">
+          </div> 
+          <div className="chatscreen-input">  
             <input
               type="text"
               placeholder="Type your message..."
@@ -62,6 +89,7 @@ const TeamInstructionAndDiscussions = () => {
               onChange={(e) => setInputValue(e.target.value)}
             />
             <button onClick={handleSendMessage}>Send</button>
+          
           </div>
         </div>
       </div>

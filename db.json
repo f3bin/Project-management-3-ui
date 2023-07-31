@@ -3,7 +3,8 @@
     {
       "username": "admin",
       "password": "admin",
-      "is_admin": true
+      "is_admin": true,
+      "user_id": "user0"
     },
     {
       "name": "hrithik",
@@ -12,6 +13,30 @@
       "password": "hrithik",
       "team": "react",
       "user_id": 1
+    },
+    {
+      "name": "febin",
+      "username": "febin",
+      "email": "febin@gmail.com",
+      "password": "febin",
+      "team": "react",
+      "user_id": 2
+    },
+    {
+      "name": "arjun",
+      "username": "arjun",
+      "email": "arjun@gmail.com",
+      "password": "arjun",
+      "team": "react",
+      "usLulu Internationaler_id": 3
+    },
+    {
+      "name": "angel",
+      "username": "angel",
+      "email": "angel@gmail.com",
+      "password": "angel",
+      "team": "react",
+      "user_id": 4
     }
   ],
   "projects": [
@@ -19,7 +44,11 @@
       "project_id": 1,
       "project_name": "Lulu",
       "project_description": "pro1",
-      "technology": ["react", "node", "ui"],
+      "technology": [
+        "react",
+        "node",
+        "ui"
+      ],
       "instruction": "inst1"
     }
   ],
@@ -35,7 +64,9 @@
   "project_team": [
     {
       "project_id": 1,
-      "react": ["hrithik"],
+      "react": [
+        "hrithik"
+      ],
       "node": [],
       "ui": []
     }
@@ -65,10 +96,34 @@
   ],
   "chats": [
     {
-      "sender_id": 1,
-      "sender_name": "hrithik",
-      "message": "blahubjambj",
-      "message_id": 1
+      "senderId": 1,
+      "senderName": "hrithik",
+      "message": "haii",
+      "id": 1
+    },
+    {
+      "senderId": 2,
+      "senderName": "febin",
+      "message": "hello hows the woek",
+      "id": 2
+    },
+    {
+      "senderId": 3,
+      "senderName": "arjun",
+      "message": "yeah going well",
+      "id": 3
+    },
+    {
+      "senderId": 4,
+      "senderName": "angel",
+      "message": "What about Teaaaaa ?",
+      "id": 4
+    },
+    {
+      "senderId": "user0",
+      "senderName": "admin",
+      "message": "do your work gys",
+      "id": 5
     }
   ]
 }

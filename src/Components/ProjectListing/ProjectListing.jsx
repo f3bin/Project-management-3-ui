@@ -22,15 +22,9 @@ function ProjectListing() {
    dispatch(viewProject());
   },[dispatch])
 
-  const { data, loading, error } = useSelector((state) => state.projects);
+  const { projects } = useSelector((state) => state.projects);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>; 
-  }
+ 
 
   return (
     <div className="table-container">
@@ -53,7 +47,7 @@ function ProjectListing() {
         </thead>
         <tbody>
           {
-            data && data.map((item)=>(
+            projects && projects.map((item)=>(
               <tr key={item.project_id}>
               <td className="left">{item.project_name}</td>
               <td className="status-red">Not completed</td>

@@ -74,7 +74,7 @@ const AddProjectForm = () => {
                     checked={sets[index].isChecked}
                     onChange={(event) => handleCheckboxChange(index, event)}
                   />
-                  {tech}: {sets[index].isChecked ? "" : ""}
+                  {tech}:{sets[index].isChecked ? "" : ""}
                 </label>
 
                 {sets[index].isChecked && (
