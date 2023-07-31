@@ -81,7 +81,7 @@ function EmployeeProjectList() {
           </thead>
           <tbody>
             <tr>
-              {projectsAssignedToUser ? (
+              {projectsAssignedToUser.length > 0  ? (
                 projectsAssignedToUser.map((project) => (
                   <>
                     <td className="employee-left">{project.project_name}</td>
@@ -97,15 +97,9 @@ function EmployeeProjectList() {
                   </>
                 ))
               ) : (
-                <td className="employee-left">No projects currently</td>
+                <td className="employee-left">No projects currently</td >
               )}
-              {/* // <td className="employee-left">Lulu International</td>
-              // <td className="employee-status-red">Not completed</td>
-              // <td className="employee-right">
-              //   <Link to="/employeedashboard/task-detail" className="Link">
-              //     Viewtasks
-              //   </Link>
-              // </td> */}
+          
             </tr>
           </tbody>
         </table>

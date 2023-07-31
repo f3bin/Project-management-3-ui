@@ -22,9 +22,9 @@ const TeamInstructionAndDiscussions = () => {
 
   // Handler for sending messages
   const handleSendMessage = () => {
-    if (user && user.user_id && inputValue.trim() !== "") {
+    if (user && user.id && inputValue.trim() !== "") {
       const newChatData = {
-        senderId:user.user_id,
+        senderId:user.id,
         senderName:user.username,
         message:inputValue
       };

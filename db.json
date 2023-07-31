@@ -4,7 +4,7 @@
       "username": "admin",
       "password": "admin",
       "is_admin": true,
-      "user_id": "user0"
+      "id": "user0"
     },
     {
       "name": "hrithik",
@@ -12,7 +12,7 @@
       "email": "hrithik@gmail.com",
       "password": "hrithik",
       "team": "react",
-      "user_id": 1
+      "id": 1
     },
     {
       "name": "febin",
@@ -20,7 +20,7 @@
       "email": "febin@gmail.com",
       "password": "febin",
       "team": "react",
-      "user_id": 2
+      "id": 2
     },
     {
       "name": "arjun",
@@ -36,7 +36,7 @@
       "email": "angel@gmail.com",
       "password": "angel",
       "team": "react",
-      "user_id": 4
+      "id": 4
     }
   ],
   "projects": [
